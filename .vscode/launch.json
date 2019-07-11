@@ -1,0 +1,39 @@
+{
+  // Use IntelliSense to learn about possible attributes.
+  // Hover to view descriptions of existing attributes.
+  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [{
+      "type": "node",
+      "request": "launch",
+      "name": "Nuxt",
+      "protocol": "inspector",
+      "program": "${workspaceRoot}/node_modules/.bin/nuxt",
+      "args": ["dev"],
+      "cwd": "${workspaceRoot}/src",
+      "sourceMaps": true,
+      "env": {
+        "NODE_ENV": "development",
+        "DEBUG": "nuxt:*,app,client"
+      }
+    },
+    {
+      "type": "node",
+      "request": "attach",
+      "name": "Attach to Nuxt",
+      "port": 9229,
+      "sourceMaps": true
+    },
+    {
+      "type": "browser-preview",
+      "name": "Browser Preview: Attach",
+      "request": "attach"
+    },
+    {
+      "type": "browser-preview",
+      "request": "launch",
+      "name": "Browser Preview: Launch",
+      "url": "http://localhost:8080"
+    }
+  ]
+}

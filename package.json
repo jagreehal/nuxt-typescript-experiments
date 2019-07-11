@@ -1,0 +1,63 @@
+{
+  "name": "nuxt-typescript-function-api-boilerplate",
+  "version": "1.0.0",
+  "description": "nuxt-typescript-function-api-boilerplate",
+  "private": true,
+  "scripts": {
+    "dev": "node node_modules/.bin/nuxt",
+    "build": "nuxt build --no-lock",
+    "lint": "eslint --ext .ts,.js,.vue src/",
+    "pretty-quick": "pretty-quick",
+    "start": "nuxt start",
+    "test": "jest",
+    "test:coverage": "jest --collectCoverage",
+    "test-watch": "jest --watch"
+  },
+  "dependencies": {
+    "@nuxt/typescript": "^2.8.1",
+    "@nuxtjs/axios": "^5.5.4",
+    "nuxt": "^2.8.1",
+    "tailwindcss": "^1.0.4",
+    "vue-function-api": "^2.0.6"
+  },
+  "devDependencies": {
+    "@nuxtjs/eslint-config": "^1.0.1",
+    "@nuxt/typescript": "^2.8.1",
+    "@nuxtjs/tailwindcss": "^1.1.0",
+    "@types/jest": "^24.0.15",
+    "@types/jest-axe": "^2.2.3",
+    "@types/prettier": "^1.16.4",
+    "@vue/cli-plugin-eslint": "^3.9.2",
+    "@vue/cli-plugin-typescript": "^3.9.0",
+    "@vue/cli-plugin-unit-jest": "^3.9.0",
+    "@vue/cli-service": "^3.9.2",
+    "@vue/eslint-config-prettier": "^4.0.1",
+    "@vue/eslint-config-typescript": "^4.0.0",
+    "@vue/test-utils": "^1.0.0-beta.29",
+    "babel-loader": "^8.0.6",
+    "babel-preset-vue": "^2.0.2",
+    "eslint": "^6.0.1",
+    "eslint-config-prettier": "^6.0.0",
+    "eslint-plugin-jest": "^22.7.2",
+    "eslint-plugin-node": "^9.1.0",
+    "eslint-plugin-prettier": "^3.1.0",
+    "eslint-plugin-vue": "^5.2.3",
+    "jest": "^24.8.0",
+    "jest-axe": "^3.1.1",
+    "jest-vue-preprocessor": "^1.5.0",
+    "prettier": "^1.18.2",
+    "pretty-quick": "^1.11.1",
+    "ts-jest": "^24.0.2",
+    "ts-loader": "^6.0.4",
+    "ts-node": "^8.3.0",
+    "typescript": "^3.5.3",
+    "vue-jest": "^3.0.4",
+    "wallaby-vue-compiler": "^1.0.6"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "pretty-quick --staged",
+      "pre-push": "npm run lint && npm test"
+    }
+  }
+}

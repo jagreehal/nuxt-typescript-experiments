@@ -1,0 +1,10 @@
+.git
+*Dockerfile*
+*docker-compose*
+node_modules
+.travis.yml
+wallaby.js
+README.md
+.vscode
+.editorconfig
+.gitignore
