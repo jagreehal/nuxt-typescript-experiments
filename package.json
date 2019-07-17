@@ -1,8 +1,7 @@
 {
-  "name": "nuxt-typescript-function-api-boilerplate",
+  "name": "nuxt-typescript-experiments",
   "version": "1.0.0",
-  "description": "nuxt-typescript-function-api-boilerplate",
-  "private": true,
+  "description": "nuxt-typescript-experiments",
   "scripts": {
     "dev": "node node_modules/.bin/nuxt",
     "build": "nuxt build --no-lock",
@@ -17,7 +16,7 @@
     "@nuxt/typescript": "^2.8.1",
     "@nuxtjs/axios": "^5.5.4",
     "nuxt": "^2.8.1",
-    "tailwindcss": "^1.0.4",
+    "tailwindcss": "^1.0.5",
     "vue-function-api": "^2.0.6"
   },
   "devDependencies": {
@@ -38,7 +37,7 @@
     "babel-preset-vue": "^2.0.2",
     "eslint": "^6.0.1",
     "eslint-config-prettier": "^6.0.0",
-    "eslint-plugin-jest": "^22.7.2",
+    "eslint-plugin-jest": "^22.8.0",
     "eslint-plugin-node": "^9.1.0",
     "eslint-plugin-prettier": "^3.1.0",
     "eslint-plugin-vue": "^5.2.3",

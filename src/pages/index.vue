@@ -12,10 +12,14 @@
   </div>
 </template>
 
-<script lang="ts">
+<script lang>
 import { value, computed, watch, onMounted } from 'vue-function-api';
+
 export default {
   components: {},
+  asyncData() {
+    return {};
+  },
   setup() {
     // reactive state
     const count = value(0);
