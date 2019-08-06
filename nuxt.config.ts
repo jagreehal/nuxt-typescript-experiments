@@ -1,3 +1,4 @@
+require('dotenv').config();
 import NuxtConfiguration from '@nuxt/config';
 
 const config: NuxtConfiguration = {
@@ -22,6 +23,9 @@ const config: NuxtConfiguration = {
   server: {
     port: process.env.NUXT_PORT || 5001,
     host: process.env.NUXT_HOST || '0.0.0.0'
+  },
+  router: {
+    middleware: 'cookie'
   },
   srcDir: 'src'
 };
