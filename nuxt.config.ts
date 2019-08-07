@@ -17,7 +17,13 @@ const config: NuxtConfiguration = {
       }
     ]
   },
-
+  modules: ['@nuxtjs/axios'],
+  axios: {
+    proxy: true
+  },
+  proxy: {
+    '/api/': { target: 'http://localhost:5005', pathRewrite: { '^/api/': '' } }
+  },
   plugins: ['@/plugins/functionApi.ts'],
   devModules: ['@nuxtjs/tailwindcss'],
   server: {

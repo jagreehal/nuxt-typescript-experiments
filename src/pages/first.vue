@@ -7,13 +7,12 @@
 </template>
 <script lang="ts">
 import Vue from 'vue';
-import { api } from '@/lib';
 export default Vue.extend({
   // @ts-ignore
-  async asyncData({ query, store, redirect }) {
+  async asyncData({ query, store, redirect, $axios }) {
     let data;
     try {
-      const response = await api.get('/data');
+      const response = await $axios.post('/api/data');
       data = response.data.date;
     } catch (e) {
       console.error('get', e);
