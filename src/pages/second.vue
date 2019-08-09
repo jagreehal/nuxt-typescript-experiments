@@ -1,6 +1,8 @@
 <template>
   <div>
     Hi - {{data}}
+        <hr />
+    {{session}}
     <hr />
     <nuxt-link to="/first">first</nuxt-link>
   </div>
@@ -12,14 +14,15 @@ export default Vue.extend({
   async asyncData({ query, store, redirect, $axios }) {
     let data;
     try {
-      const response = await $axios.post('/api/data');
+      const response = await $axios.post('/data');
       data = response.data.date;
     } catch (e) {
       console.error('get', e);
     }
 
     return {
-      data
+      data,
+            session: store.state.session
     };
   }
 });

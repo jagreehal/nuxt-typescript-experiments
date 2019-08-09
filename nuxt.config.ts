@@ -22,7 +22,9 @@ const config: NuxtConfiguration = {
     proxy: true
   },
   proxy: {
-    '/api/': { target: 'http://localhost:5005', pathRewrite: { '^/api/': '' } }
+    '/data': 'http://localhost:5005',
+    '/graphql': 'http://localhost:5005',
+    debug: true
   },
   plugins: ['@/plugins/functionApi.ts'],
   devModules: ['@nuxtjs/tailwindcss'],
