@@ -1,9 +1,13 @@
-require('dotenv').config();
-import NuxtConfiguration from '@nuxt/config';
-
-const config: NuxtConfiguration = {
+const config = {
   build: {
-    extractCSS: true
+    extractCSS: true,
+    extend(config) {
+      config.module.rules.push({
+        test: /\.(graphql|gql)$/,
+        exclude: /node_modules/,
+        loader: 'graphql-tag/loader'
+      });
+    }
   },
   head: {
     title: 'nuxt-typescript-function-api-boilerplate',
@@ -17,7 +21,7 @@ const config: NuxtConfiguration = {
       }
     ]
   },
-  modules: ['@nuxtjs/axios'],
+  modules: ['@nuxtjs/axios', '@nuxt/typescript-build', '@nuxtjs/tailwindcss'],
   axios: {
     proxy: true
   },
@@ -26,16 +30,13 @@ const config: NuxtConfiguration = {
     '/graphql': 'http://localhost:5005',
     debug: true
   },
-  plugins: ['@/plugins/functionApi.ts'],
-  devModules: ['@nuxtjs/tailwindcss'],
+  plugins: ['@/plugins/composition-api', '@/plugins/click-outside'],
   server: {
     port: process.env.NUXT_PORT || 5001,
     host: process.env.NUXT_HOST || '0.0.0.0'
   },
-  router: {
-    middleware: 'cookie'
-  },
-  srcDir: 'src'
+
+  srcDir: 'src/'
 };
 
 export default config;

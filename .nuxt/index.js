@@ -1,7 +1,8 @@
 import Vue from 'vue'
 import Meta from 'vue-meta'
+import ClientOnly from 'vue-client-only'
+import NoSsr from 'vue-no-ssr'
 import { createRouter } from './router.js'
-import NoSsr from './components/no-ssr.js'
 import NuxtChild from './components/nuxt-child.js'
 import NuxtError from './components/nuxt-error.vue'
 import Nuxt from './components/nuxt.js'
@@ -11,11 +12,23 @@ import { createStore } from './store.js'
 
 /* Plugins */
 
-import nuxt_plugin_axios_76f5900c from 'nuxt_plugin_axios_76f5900c' // Source: ./axios.js (mode: 'all')
-import nuxt_plugin_functionApi_0cc32bbf from 'nuxt_plugin_functionApi_0cc32bbf' // Source: ../src/plugins/functionApi.ts (mode: 'all')
+import nuxt_plugin_axios_6b9b6358 from 'nuxt_plugin_axios_6b9b6358' // Source: ./axios.js (mode: 'all')
+import nuxt_plugin_compositionapi_fa0591fa from 'nuxt_plugin_compositionapi_fa0591fa' // Source: ../src/plugins/composition-api (mode: 'all')
+import nuxt_plugin_clickoutside_1bcf2628 from 'nuxt_plugin_clickoutside_1bcf2628' // Source: ../src/plugins/click-outside (mode: 'all')
 
-// Component: <NoSsr>
-Vue.component(NoSsr.name, NoSsr)
+// Component: <ClientOnly>
+Vue.component(ClientOnly.name, ClientOnly)
+// TODO: Remove in Nuxt 3: <NoSsr>
+Vue.component(NoSsr.name, {
+  ...NoSsr,
+  render(h, ctx) {
+    if (process.client && !NoSsr._warned) {
+      NoSsr._warned = true
+      console.warn(`<no-ssr> has been deprecated and will be removed in Nuxt 3, please use <client-only> instead`)
+    }
+    return NoSsr.render(h, ctx)
+  }
+})
 
 // Component: <NuxtChild>
 Vue.component(NuxtChild.name, NuxtChild)
@@ -152,12 +165,16 @@ async function createApp(ssrContext) {
 
   // Plugin execution
 
-  if (typeof nuxt_plugin_axios_76f5900c === 'function') {
-    await nuxt_plugin_axios_76f5900c(app.context, inject)
+  if (typeof nuxt_plugin_axios_6b9b6358 === 'function') {
+    await nuxt_plugin_axios_6b9b6358(app.context, inject)
   }
 
-  if (typeof nuxt_plugin_functionApi_0cc32bbf === 'function') {
-    await nuxt_plugin_functionApi_0cc32bbf(app.context, inject)
+  if (typeof nuxt_plugin_compositionapi_fa0591fa === 'function') {
+    await nuxt_plugin_compositionapi_fa0591fa(app.context, inject)
+  }
+
+  if (typeof nuxt_plugin_clickoutside_1bcf2628 === 'function') {
+    await nuxt_plugin_clickoutside_1bcf2628(app.context, inject)
   }
 
   // If server-side, wait for async component to be resolved first
